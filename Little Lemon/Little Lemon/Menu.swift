@@ -16,9 +16,35 @@ struct Menu: View {
     
     var body: some View {
         VStack{
-            Text("Title")
-            Text("location")
-            Text("short description")
+            
+            VStack{
+                HStack{
+                    
+                    VStack(alignment: .leading){
+                        Text("Little Lemon")
+                            .font(.title)
+                            .foregroundColor(Color("approvedYellow"))
+                        Text("Chicago")
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                        Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                    }
+                    
+                    AsyncImage(url: URL(string: "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/bruschetta.jpg?raw=true")){ image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(20)
+                }
+            }
+            .padding(10)
+            .frame(width: 400, height: 200)
+            .background(Color("green"))
+            
             
             FetchedObjects(
                 predicate: buildPredicate(),
